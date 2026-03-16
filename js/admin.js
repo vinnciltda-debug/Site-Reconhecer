@@ -50,30 +50,31 @@ function logout() {
 }
 
 // ---- Carregar dados ----
-function loadData(filter, unitFilterValue) {
+function loadData(filter) {
     var registrations = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 
-    // Filtrar se houver busca ou filtro de unidade
-    if (filter || unitFilterValue) {
-        var searchTerm = (filter || '').toLowerCase();
-        registrations = registrations.filter(function (r) {
-            var matchesSearch = !searchTerm ||
-                (r.nomeCompleto || '').toLowerCase().includes(searchTerm) ||
-                (r.email || '').toLowerCase().includes(searchTerm) ||
-                (r.empresa || '').toLowerCase().includes(searchTerm);
+    // Filtrar se houver busca ou unidade
+    var selectedUnidade = document.getElementById('unitFilter') ? document.getElementById('unitFilter').value : 'todas';
+    var searchTerm = filter ? filter.toLowerCase() : (searchInput.value ? searchInput.value.toLowerCase() : '');
 
-            var matchesUnit = !unitFilterValue || r.unidade === unitFilterValue;
+    registrations = registrations.filter(function (r) {
+        var matchesUnit = (selectedUnidade === 'todas') || (r.unidade === selectedUnidade);
+        var matchesSearch = (r.nomeCompleto || '').toLowerCase().includes(searchTerm) ||
+            (r.email || '').toLowerCase().includes(searchTerm) ||
+            (r.empresa || '').toLowerCase().includes(searchTerm);
+        return matchesUnit && matchesSearch;
+    });
 
-            return matchesSearch && matchesUnit;
-        });
-    }
+    // Atualizar stats (breakdown)
+    var allRegs = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    var totalCompanions = allRegs.filter(function (r) { return r.acompanhante === 'Sim'; }).length;
+    var spCount = allRegs.filter(function (r) { return r.unidade === 'São Paulo'; }).length;
+    var mgCount = allRegs.filter(function (r) { return r.unidade === 'Minas Gerais'; }).length;
 
-    // Atualizar stats (sempre com dados totais)
-    var allRegistrations = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    var totalCompanions = allRegistrations.filter(function (r) { return r.acompanhante === 'Sim'; }).length;
-    document.getElementById('statTotal').textContent = allRegistrations.length;
-    document.getElementById('statCompanions').textContent = totalCompanions;
-    document.getElementById('statPeople').textContent = allRegistrations.length + totalCompanions;
+    document.getElementById('statTotal').textContent = allRegs.length;
+    document.getElementById('statSP').textContent = spCount;
+    document.getElementById('statMG').textContent = mgCount;
+    document.getElementById('statPeople').textContent = allRegs.length + totalCompanions;
 
     // Renderizar tabela
     tableBody.innerHTML = '';
@@ -90,7 +91,7 @@ function loadData(filter, unitFilterValue) {
         tr.innerHTML =
             '<td>' + (index + 1) + '</td>' +
             '<td>' + escapeHtml(reg.dataInscricao || '') + '</td>' +
-            '<td><span class="badge ' + (reg.unidade === 'São Paulo' ? 'bg-info' : 'bg-warning text-dark') + '">' + escapeHtml(reg.unidade || '-') + '</span></td>' +
+            '<td><span class="badge ' + (reg.unidade === 'São Paulo' ? 'bg-primary' : 'bg-success') + '">' + escapeHtml(reg.unidade || '-') + '</span></td>' +
             '<td><strong>' + escapeHtml(reg.nomeCompleto || '') + '</strong></td>' +
             '<td>' + escapeHtml(reg.email || '') + '</td>' +
             '<td>' + escapeHtml(reg.telefone || '') + '</td>' +
@@ -106,13 +107,9 @@ function loadData(filter, unitFilterValue) {
     });
 }
 
-// ---- Busca e Filtro ----
-document.getElementById('searchInput').addEventListener('input', function () {
-    loadData(this.value, document.getElementById('unitFilter').value);
-});
-
-document.getElementById('unitFilter').addEventListener('change', function () {
-    loadData(document.getElementById('searchInput').value, this.value);
+// ---- Busca ----
+searchInput.addEventListener('input', function () {
+    loadData(this.value);
 });
 
 // ---- Exportar para Excel ----
@@ -150,6 +147,7 @@ function exportToExcel() {
     var colWidths = [
         { wch: 4 },   // #
         { wch: 18 },  // Data
+        { wch: 15 },  // Unidade
         { wch: 30 },  // Nome
         { wch: 30 },  // Email
         { wch: 16 },  // Telefone

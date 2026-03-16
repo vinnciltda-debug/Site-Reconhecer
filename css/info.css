@@ -223,11 +223,6 @@
    SEÇÃO 90 ANOS — Celebração
    ============================================ */
 
-/* ---- Gradientes ---- */
-:root {
-    --gradient-primary: linear-gradient(135deg, #005496 0%, #0083b5 50%, #7ac143 100%);
-}
-
 .section-90anos {
     background: linear-gradient(180deg, var(--color-white) 0%, var(--color-blue-50) 40%, var(--color-white) 100%);
     padding-bottom: var(--space-4xl);
@@ -391,73 +386,39 @@
    LOCATION TABS (SP / MG)
    ============================================ */
 .location-tabs {
-    gap: var(--space-md);
-    border: none;
-    margin-bottom: var(--space-2xl) !important;
-}
-
-.location-tabs .nav-item {
-    flex: 0 1 200px;
+    gap: var(--space-sm);
 }
 
 .location-tabs .nav-link {
-    width: 100%;
     font-family: var(--font-heading);
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
     color: var(--color-blue-700);
     background: var(--color-white);
     border: 2px solid var(--color-gray-200);
     border-radius: var(--radius-full);
-    padding: var(--space-md) var(--space-xl);
-    transition: all var(--transition-base);
+    padding: var(--space-sm) var(--space-xl);
+    transition: all var(--transition-fast);
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: var(--space-sm);
-    box-shadow: var(--shadow-sm);
-    text-transform: none;
-    letter-spacing: 0;
 }
 
-.location-tabs .nav-link i {
-    font-size: 1.25rem;
-    transition: transform var(--transition-fast);
-}
-
-.location-tabs .nav-link:hover:not(.active) {
+.location-tabs .nav-link:hover {
     border-color: var(--color-blue-300);
     color: var(--color-blue-300);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
 }
 
 .location-tabs .nav-link.active {
     background: var(--gradient-primary);
     color: var(--color-white);
     border-color: transparent;
-    box-shadow: 0 10px 20px rgba(0, 79, 145, 0.2);
+    box-shadow: var(--shadow-md);
 }
 
-.location-tabs .nav-link.active i {
-    transform: scale(1.1);
+.location-tabs .nav-link i {
+    font-size: 1.1rem;
 }
-
-@media (max-width: 575.98px) {
-    .location-tabs {
-        flex-direction: column;
-        width: 100%;
-        max-width: 280px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .location-tabs .nav-item {
-        flex: 1 1 auto;
-        width: 100%;
-    }
-}
-
 
 /* ============================================
    FORM — Destaque do campo Unidade

@@ -122,20 +122,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ---- Animated Counters (90 Anos Section) ----
+    // ---- Counter Animation (90 Anos Section) ----
     const counters = document.querySelectorAll('.counter-card__number');
 
     function animateCounters() {
         counters.forEach(counter => {
             const target = +counter.getAttribute('data-target');
-            const duration = 2000;
+            const duration = 2000; // ms
             const increment = target / (duration / 16);
 
-            let count = 0;
+            let currentCount = 0;
             const updateCount = () => {
-                count += increment;
-                if (count < target) {
-                    counter.innerText = Math.ceil(count);
+                currentCount += increment;
+                if (currentCount < target) {
+                    counter.innerText = Math.ceil(currentCount);
                     requestAnimationFrame(updateCount);
                 } else {
                     counter.innerText = target;
@@ -145,15 +145,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    if ('IntersectionObserver' in window && counters.length > 0) {
-        const counterObserver = new IntersectionObserver(function (entries) {
-            if (entries[0].isIntersecting) {
-                animateCounters();
-                counterObserver.unobserve(entries[0].target);
-            }
+    if (counters.length > 0 && 'IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
         }, { threshold: 0.5 });
 
-        counterObserver.observe(document.querySelector('.ninetyanos-counters'));
+        const countersContainer = document.querySelector('.ninetyanos-counters');
+        if (countersContainer) counterObserver.observe(countersContainer);
     }
 
 });

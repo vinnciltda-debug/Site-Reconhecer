@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var data = {
             id: Date.now(),
             dataInscricao: new Date().toLocaleString('pt-BR'),
-            unidade: document.getElementById('unidade').value,
+            unidade: document.getElementById('unidade').value, // Novo campo
             nomeCompleto: document.getElementById('fullName').value.trim(),
             email: document.getElementById('email').value.trim(),
             telefone: document.getElementById('phone').value.trim(),

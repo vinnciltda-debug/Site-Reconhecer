@@ -51,11 +51,6 @@
     opacity: 1;
 }
 
-.footer__logo--90 {
-    height: 55px;
-    /* Slightly larger to be legible */
-}
-
 .footer__logo-divider {
     width: 1px;
     height: 30px;
@@ -136,9 +131,5 @@
     .footer__bottom {
         flex-direction: column;
         text-align: center;
-    }
-
-    .footer__logo--90 {
-        height: 45px;
     }
 }
