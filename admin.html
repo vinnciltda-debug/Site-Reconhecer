@@ -182,31 +182,71 @@
         .btn-admin--primary {
             background: var(--gradient-primary);
             color: white;
+            box-shadow: 0 4px 12px rgba(0, 131, 181, 0.2);
         }
 
         .btn-admin--primary:hover {
             filter: brightness(1.1);
             transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0, 131, 181, 0.3);
         }
 
         .btn-admin--danger {
+            background: #fff;
+            color: #dc3545;
+            border: 1px solid #dc3545;
+        }
+
+        .btn-admin--danger:hover {
             background: #dc3545;
             color: white;
         }
 
-        .btn-admin--danger:hover {
-            background: #c82333;
-        }
-
         .btn-admin--outline {
             background: transparent;
-            border: 2px solid var(--color-gray-300);
+            border: 2px solid var(--color-gray-200);
             color: var(--color-gray-600);
         }
 
         .btn-admin--outline:hover {
             border-color: var(--color-blue-300);
             color: var(--color-blue-700);
+            background: var(--color-blue-50);
+        }
+
+        /* Stats Cards Enhanced */
+        .stat-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 1px solid var(--color-gray-100);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0.6;
+        }
+
+        .stat-card__icon {
+            font-size: 1.5rem;
+            color: var(--color-blue-300);
+            margin-bottom: 0.5rem;
+            display: block;
         }
 
         /* Table */
@@ -224,14 +264,17 @@
         }
 
         .table-admin th {
-            background: var(--color-blue-50);
+            background: #f8fbff;
             color: var(--color-blue-700);
             font-family: var(--font-heading);
             font-weight: 600;
-            padding: 0.875rem 1rem;
+            padding: 1rem;
             text-align: left;
             white-space: nowrap;
-            border-bottom: 2px solid var(--color-gray-200);
+            border-bottom: 2px solid var(--color-blue-100);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .table-admin td {
@@ -338,21 +381,27 @@
 
         <div class="admin-container">
             <!-- Stats -->
-            <div class="stat-card">
-                <div class="stat-card__number" id="statTotal">0</div>
-                <div class="stat-card__label">Total Geral</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card__number" id="statSP">0</div>
-                <div class="stat-card__label">São Paulo</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card__number" id="statMG">0</div>
-                <div class="stat-card__label">Minas Gerais</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card__number" id="statPeople">0</div>
-                <div class="stat-card__label">Total Pessoas (convidados + acompanhantes)</div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="bi bi-people stat-card__icon"></i>
+                    <div class="stat-card__number" id="statTotal">0</div>
+                    <div class="stat-card__label">Total Geral</div>
+                </div>
+                <div class="stat-card">
+                    <i class="bi bi-geo-alt stat-card__icon"></i>
+                    <div class="stat-card__number" id="statSP">0</div>
+                    <div class="stat-card__label">São Paulo</div>
+                </div>
+                <div class="stat-card">
+                    <i class="bi bi-geo stat-card__icon"></i>
+                    <div class="stat-card__number" id="statMG">0</div>
+                    <div class="stat-card__label">Minas Gerais</div>
+                </div>
+                <div class="stat-card">
+                    <i class="bi bi-person-plus stat-card__icon"></i>
+                    <div class="stat-card__number" id="statPeople">0</div>
+                    <div class="stat-card__label">Total de Pessoas</div>
+                </div>
             </div>
 
             <!-- Toolbar -->
