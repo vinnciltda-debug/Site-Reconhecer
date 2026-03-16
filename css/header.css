@@ -1,0 +1,286 @@
+/* ============================================
+   RECONHECER 2026 - Header & Hero
+   Navbar fixa + Hero section com logos
+   ============================================ */
+
+/* ---- Navbar ---- */
+.navbar-reconhecer {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 131, 181, 0.08);
+    padding: var(--space-sm) 0;
+    transition: all var(--transition-base);
+    z-index: 1050;
+}
+
+.navbar-reconhecer.scrolled {
+    box-shadow: var(--shadow-md);
+    padding: 0;
+}
+
+.navbar-reconhecer .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.navbar-reconhecer .logo-reconhecer {
+    height: 48px;
+    width: auto;
+    transition: height var(--transition-base);
+}
+
+.navbar-reconhecer .logo-90anos {
+    height: 44px;
+    width: auto;
+    transition: height var(--transition-base);
+}
+
+.navbar-reconhecer.scrolled .logo-reconhecer {
+    height: 38px;
+}
+
+.navbar-reconhecer.scrolled .logo-90anos {
+    height: 34px;
+}
+
+.navbar-reconhecer .logo-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--color-gray-300);
+}
+
+.navbar-reconhecer .nav-link {
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600) !important;
+    padding: var(--space-sm) var(--space-md) !important;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.navbar-reconhecer .nav-link:hover,
+.navbar-reconhecer .nav-link.active {
+    color: var(--color-blue-700) !important;
+    background: rgba(0, 131, 181, 0.06);
+}
+
+.navbar-reconhecer .nav-cta {
+    background: var(--gradient-primary);
+    color: var(--color-white) !important;
+    padding: var(--space-sm) var(--space-lg) !important;
+    font-weight: var(--font-weight-semibold);
+}
+
+.navbar-reconhecer .nav-cta:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    color: var(--color-white) !important;
+    background: var(--gradient-primary);
+}
+
+/* ---- Hero Section ---- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--gradient-hero);
+    padding-top: 80px;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: var(--space-2xl);
+}
+
+.hero__logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+    flex-wrap: wrap;
+    padding: 0 var(--space-md);
+}
+
+.hero__logo-main {
+    height: 140px;
+    width: auto;
+    filter: drop-shadow(0 4px 20px rgba(0, 79, 145, 0.15));
+    animation: floatIn 1s ease-out;
+}
+
+.hero__logo-90 {
+    height: 130px;
+    width: auto;
+    filter: drop-shadow(0 4px 20px rgba(0, 79, 145, 0.15));
+    animation: floatIn 1s ease-out 0.2s both;
+}
+
+.hero__logo-divider {
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(180deg, transparent, var(--color-blue-300), transparent);
+    animation: floatIn 1s ease-out 0.1s both;
+}
+
+.hero__title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-blue-700);
+    margin-bottom: var(--space-md);
+    animation: slideUp 0.8s ease-out 0.4s both;
+}
+
+.hero__title span {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero__subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-500);
+    max-width: 600px;
+    margin: 0 auto var(--space-2xl);
+    animation: slideUp 0.8s ease-out 0.6s both;
+}
+
+.hero__cta {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: slideUp 0.8s ease-out 0.8s both;
+}
+
+.hero__scroll-indicator {
+    position: absolute;
+    bottom: var(--space-2xl);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    animation: bounce 2s ease-in-out infinite;
+    color: var(--color-blue-300);
+    font-size: var(--font-size-xl);
+    opacity: 0.6;
+}
+
+/* ---- Animações ---- */
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+/* ---- Responsivo ---- */
+@media (max-width: 991.98px) {
+    .hero__logo-main {
+        height: 100px;
+    }
+
+    .hero__logo-90 {
+        height: 90px;
+    }
+
+    .hero__logo-divider {
+        display: none;
+        /* Esconde o divisor quando os logos empilham */
+    }
+
+    .hero__logos {
+        gap: var(--space-lg);
+        flex-direction: column;
+        /* Força empilhamento em telas pequenas */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: var(--space-4xl);
+    }
+
+    .hero__logos {
+        gap: var(--space-lg);
+    }
+
+    .hero__logo-main {
+        height: 80px;
+    }
+
+    .hero__logo-90 {
+        height: 70px;
+    }
+
+    .hero__logo-divider {
+        height: 50px;
+    }
+
+    .hero__title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .hero__subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .navbar-reconhecer .logo-reconhecer {
+        height: 36px;
+    }
+
+    .navbar-reconhecer .logo-90anos {
+        height: 32px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero__logo-main {
+        height: 65px;
+    }
+
+    .hero__logo-90 {
+        height: 58px;
+    }
+}

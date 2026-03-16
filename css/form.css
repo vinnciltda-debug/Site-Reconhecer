@@ -1,0 +1,250 @@
+/* ============================================
+   RECONHECER 2026 - Formulário de Inscrição
+   Estilização e validação visual
+   ============================================ */
+
+/* ---- Container do Form ---- */
+.form-section {
+    position: relative;
+}
+
+.form-wrapper {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3xl);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(0, 131, 181, 0.1);
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glassmorphism para o Modal */
+.modal-content.form-wrapper {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--gradient-primary);
+}
+
+/* ---- Form Header ---- */
+.form-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+}
+
+.form-header__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-md);
+    color: var(--color-white);
+    font-size: 1.5rem;
+}
+
+/* ---- Campos ---- */
+.form-floating-custom {
+    position: relative;
+    margin-bottom: var(--space-lg);
+}
+
+.form-floating-custom .form-control,
+.form-floating-custom .form-select {
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+    background: var(--color-white);
+    height: auto;
+}
+
+.form-floating-custom .form-control:focus,
+.form-floating-custom .form-select:focus {
+    border-color: var(--color-blue-300);
+    box-shadow: 0 0 0 4px rgba(0, 131, 181, 0.1);
+    outline: none;
+}
+
+.form-floating-custom .form-control.is-valid {
+    border-color: var(--color-green-400);
+}
+
+.form-floating-custom .form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+.form-floating-custom label {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-600);
+    margin-bottom: 6px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.form-floating-custom label .required {
+    color: #dc3545;
+    margin-left: 2px;
+}
+
+/* ---- Grupo de Toggle (Acompanhante) ---- */
+.toggle-group {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.toggle-group__btn {
+    flex: 1;
+    padding: var(--space-sm) var(--space-md);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    color: var(--color-gray-600);
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: center;
+}
+
+.toggle-group__btn:hover {
+    border-color: var(--color-blue-300);
+    color: var(--color-blue-700);
+}
+
+.toggle-group__btn.active {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    border-color: transparent;
+}
+
+.toggle-group__btn input {
+    display: none;
+}
+
+/* ---- Campo condicional ---- */
+.conditional-field {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.conditional-field.show {
+    max-height: 200px;
+    opacity: 1;
+}
+
+/* ---- Botão de Submit ---- */
+.form-submit-btn {
+    width: 100%;
+    padding: var(--space-md) var(--space-2xl);
+    font-size: var(--font-size-md);
+    margin-top: var(--space-md);
+}
+
+/* ---- Sucesso ---- */
+.form-success {
+    display: none;
+    text-align: center;
+    padding: var(--space-3xl);
+    animation: successPop 0.5s ease-out;
+}
+
+.form-success.show {
+    display: block;
+}
+
+.form-success__icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-xl);
+    color: var(--color-white);
+    font-size: 2rem;
+}
+
+.form-success__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-blue-700);
+    margin-bottom: var(--space-sm);
+}
+
+.form-success__text {
+    color: var(--color-gray-500);
+}
+
+@keyframes successPop {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ---- Termos ---- */
+.form-check-custom {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.form-check-custom .form-check-input {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-gray-300);
+    border-radius: var(--radius-sm);
+    margin-top: 2px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.form-check-custom .form-check-input:checked {
+    background-color: var(--color-blue-300);
+    border-color: var(--color-blue-300);
+}
+
+.form-check-custom .form-check-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-500);
+    cursor: pointer;
+}
+
+/* ---- Responsivo ---- */
+@media (max-width: 767.98px) {
+    .form-wrapper {
+        padding: var(--space-xl);
+        border-radius: var(--radius-lg);
+        margin: 0 var(--space-sm);
+    }
+}
