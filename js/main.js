@@ -122,4 +122,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ---- Animated Counters (90 Anos Section) ----
+    const counters = document.querySelectorAll('.counter-card__number');
+
+    function animateCounters() {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 2000;
+            const increment = target / (duration / 16);
+
+            let count = 0;
+            const updateCount = () => {
+                count += increment;
+                if (count < target) {
+                    counter.innerText = Math.ceil(count);
+                    requestAnimationFrame(updateCount);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    }
+
+    if ('IntersectionObserver' in window && counters.length > 0) {
+        const counterObserver = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                counterObserver.unobserve(entries[0].target);
+            }
+        }, { threshold: 0.5 });
+
+        counterObserver.observe(document.querySelector('.ninetyanos-counters'));
+    }
+
 });

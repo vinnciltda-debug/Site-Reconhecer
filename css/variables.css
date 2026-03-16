@@ -14,7 +14,7 @@
   --color-blue-300: #0083b5;
   --color-blue-200: #1783d5;
   --color-blue-100: #00b9f2;
-  --color-blue-50:  #e0f4ff;
+  --color-blue-50: #e0f4ff;
 
   /* ---- Cores Secundárias (Verde) ---- */
   --color-green-700: #6c9328;
@@ -34,16 +34,16 @@
   --color-teal-100: #00cbd3;
 
   /* ---- Gradientes ---- */
-  --gradient-primary: linear-gradient(135deg, var(--color-blue-700) 0%, var(--color-teal-400) 50%, var(--color-green-400) 100%);
+  --gradient-primary: linear-gradient(135deg, #005496 0%, #0083b5 50%, #7ac143 100%);
   --gradient-wave-1: linear-gradient(90deg, var(--color-blue-900) 0%, var(--color-blue-300) 30%, var(--color-green-400) 60%, var(--color-teal-400) 80%, var(--color-blue-700) 100%);
   --gradient-wave-2: linear-gradient(90deg, var(--color-green-600) 0%, var(--color-teal-300) 40%, var(--color-blue-200) 70%, var(--color-blue-600) 100%);
   --gradient-wave-3: linear-gradient(90deg, var(--color-teal-500) 0%, var(--color-blue-100) 35%, var(--color-green-300) 65%, var(--color-teal-400) 100%);
-  --gradient-hero: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(224,244,255,0.8) 60%, rgba(255,255,255,0.95) 100%);
-  --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(224,244,255,0.4));
+  --gradient-hero: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(224, 244, 255, 0.8) 60%, rgba(255, 255, 255, 0.95) 100%);
+  --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(224, 244, 255, 0.4));
 
   /* ---- Neutros ---- */
   --color-white: #ffffff;
-  --color-gray-50:  #f8f9fa;
+  --color-gray-50: #f8f9fa;
   --color-gray-100: #f0f2f5;
   --color-gray-200: #e2e6ea;
   --color-gray-300: #ced4da;

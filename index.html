@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reconhecer 2026 | Fundação Zerrenner 90 Anos</title>
     <meta name="description"
-        content="Evento Reconhecer 2026 - Celebrando os 90 anos da Fundação Antonio e Helena Zerrenner.">
+        content="Evento Reconhecer 2026 - Celebrando os 90 anos da Fundação Antonio e Helena Zerrenner. Cuidando de vidas.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +49,7 @@
             <a class="navbar-brand" href="#hero">
                 <img src="logo.svg" alt="Reconhecer logo" class="logo-reconhecer">
                 <div class="logo-divider"></div>
-                <img src="logo 90 anos.svg" alt="90 anos logo" class="logo-90anos">
+                <img src="img/90-anos-logo.png" alt="90 anos logo" class="logo-90anos">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -59,6 +59,9 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#90anos">90 Anos</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#sobre">Sobre</a>
                     </li>
@@ -91,7 +94,6 @@
         <section class="hero" id="hero" aria-label="Área principal">
             <!-- Ondas animadas no fundo -->
             <div class="waves-container" aria-hidden="true">
-                <!-- SVG Waves -->
                 <svg class="wave-svg wave-svg--1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"
                     preserveAspectRatio="none">
                     <path fill="#0083b5"
@@ -117,20 +119,21 @@
                     <div class="hero__logos">
                         <img src="logo.svg" alt="Reconhecer" class="hero__logo-main">
                         <div class="hero__logo-divider"></div>
-                        <img src="logo 90 anos.svg" alt="90 Anos Fundação Zerrenner" class="hero__logo-90">
+                        <img src="img/90-anos-logo.png" alt="90 Anos Fundação Zerrenner — Cuidando de vidas"
+                            class="hero__logo-90">
                     </div>
                     <h1 class="hero__title">Bem-vindos ao <span>Reconhecer 2026</span></h1>
                     <p class="hero__subtitle">
-                        Celebrando trajetórias, reconhecendo talentos e comemorando os 90 anos de dedicação da Fundação
-                        Antonio e
-                        Helena Zerrenner.
+                        Celebrando trajetórias, reconhecendo talentos e comemorando os <strong>90 anos</strong> de
+                        dedicação da
+                        Fundação Zerrenner. <em>Cuidando de vidas.</em>
                     </p>
                     <div class="hero__cta">
                         <button class="btn-primary-custom" data-bs-toggle="modal" data-bs-target="#registrationModal">
                             <i class="bi bi-calendar-check"></i> Faça sua inscrição
                         </button>
-                        <a href="#sobre" class="btn-outline-custom">
-                            Saiba mais
+                        <a href="#90anos" class="btn-outline-custom">
+                            <i class="bi bi-Award"></i> 90 Anos
                         </a>
                     </div>
                 </div>
@@ -138,6 +141,94 @@
 
             <div class="hero__scroll-indicator" aria-hidden="true">
                 <i class="bi bi-chevron-double-down"></i>
+            </div>
+        </section>
+
+        <!-- ==============================
+         SEÇÃO 90 ANOS — DESTAQUE
+    =============================== -->
+        <section class="section section-90anos" id="90anos" aria-label="Celebração 90 anos">
+            <div class="container">
+                <div class="ninetyanos-intro text-center fade-in">
+                    <img src="img/90-anos-logo.png" alt="90 Anos Fundação Zerrenner" class="ninetyanos-logo">
+                    <h2 class="section__title">90 Anos Cuidando de Vidas</h2>
+                    <p class="section__subtitle">
+                        Desde 1936, a Fundação Antonio e Helena Zerrenner é referência em saúde, educação e assistência
+                        social para
+                        colaboradores e beneficiários. Conheça nossa trajetória.
+                    </p>
+                </div>
+
+                <!-- Contadores -->
+                <div class="ninetyanos-counters fade-in">
+                    <div class="counter-card">
+                        <span class="counter-card__number" data-target="90">0</span>
+                        <span class="counter-card__label">Anos de História</span>
+                    </div>
+                    <div class="counter-card">
+                        <span class="counter-card__number" data-target="50">0</span>
+                        <span class="counter-card__suffix">mil+</span>
+                        <span class="counter-card__label">Vidas Impactadas</span>
+                    </div>
+                    <div class="counter-card">
+                        <span class="counter-card__number" data-target="2">0</span>
+                        <span class="counter-card__label">Estados com Eventos</span>
+                    </div>
+                    <div class="counter-card">
+                        <span class="counter-card__number" data-target="1936">0</span>
+                        <span class="counter-card__label">Ano de Fundação</span>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="ninetyanos-timeline fade-in">
+                    <h3 class="text-center mb-4"
+                        style="color: var(--color-blue-700); font-family: var(--font-heading);">
+                        Nossa Trajetória</h3>
+                    <div class="timeline">
+                        <div class="timeline__item">
+                            <div class="timeline__dot"></div>
+                            <div class="timeline__content">
+                                <span class="timeline__year">1936</span>
+                                <p>Fundação Antonio e Helena Zerrenner é criada como instituição de apoio aos
+                                    colaboradores da
+                                    Antarctica.</p>
+                            </div>
+                        </div>
+                        <div class="timeline__item">
+                            <div class="timeline__dot"></div>
+                            <div class="timeline__content">
+                                <span class="timeline__year">1950</span>
+                                <p>Expansão dos programas de saúde e assistência social, alcançando milhares de
+                                    famílias.</p>
+                            </div>
+                        </div>
+                        <div class="timeline__item">
+                            <div class="timeline__dot"></div>
+                            <div class="timeline__content">
+                                <span class="timeline__year">1980</span>
+                                <p>Investimento em educação: bolsas de estudo e programas de capacitação profissional.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline__item">
+                            <div class="timeline__dot"></div>
+                            <div class="timeline__content">
+                                <span class="timeline__year">2000</span>
+                                <p>Modernização e expansão para novas regiões, ampliando a rede de beneficiários.</p>
+                            </div>
+                        </div>
+                        <div class="timeline__item">
+                            <div class="timeline__dot"></div>
+                            <div class="timeline__content">
+                                <span class="timeline__year">2026</span>
+                                <p><strong>Jubileu de 90 anos!</strong> Comemorando com o evento Reconhecer em São Paulo
+                                    e Minas
+                                    Gerais.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -168,7 +259,7 @@
                         </p>
                     </div>
                     <div class="about-logo">
-                        <img src="logo 90 anos.svg" alt="Fundação Zerrenner 90 Anos">
+                        <img src="img/90-anos-logo.png" alt="Fundação Zerrenner 90 Anos — Cuidando de vidas">
                     </div>
                 </div>
             </div>
@@ -181,33 +272,92 @@
             </svg>
         </div>
 
-        <!-- ---- Seção Informações ---- -->
+        <!-- ==============================
+         SEÇÃO INFORMAÇÕES — TABS SP × MG
+    =============================== -->
         <section class="section section--alt" id="informacoes" aria-label="Informações do evento">
             <div class="container">
-                <h2 class="section__title fade-in">Informações Importantes</h2>
-                <p class="section__subtitle fade-in">Tudo o que você precisa saber para aproveitar o grande dia.</p>
+                <h2 class="section__title fade-in">Informações do Evento</h2>
+                <p class="section__subtitle fade-in">Escolha sua cidade para ver os detalhes do evento.</p>
 
-                <div class="info-grid fade-in">
-                    <div class="info-card">
-                        <div class="info-card__icon"><i class="bi bi-calendar-event"></i></div>
-                        <h3 class="info-card__title">Data</h3>
-                        <p class="info-card__text">Sábado, 15 de Agosto de 2026</p>
+                <!-- Nav Tabs -->
+                <div class="d-flex justify-content-center mb-5 fade-in">
+                    <ul class="nav nav-pills location-tabs" id="locationTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="sp-tab" data-bs-toggle="tab" data-bs-target="#tab-sp"
+                                type="button" role="tab" aria-controls="tab-sp" aria-selected="true">
+                                <i class="bi bi-building"></i> <span>São Paulo</span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="mg-tab" data-bs-toggle="tab" data-bs-target="#tab-mg"
+                                type="button" role="tab" aria-controls="tab-mg" aria-selected="false">
+                                <i class="bi bi-tree"></i> <span>Minas Gerais</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content fade-in" id="locationTabsContent">
+
+                    <!-- SP -->
+                    <div class="tab-pane fade show active" id="tab-sp" role="tabpanel" aria-labelledby="sp-tab">
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card__icon"><i class="bi bi-calendar-event"></i></div>
+                                <h3 class="info-card__title">Data</h3>
+                                <p class="info-card__text">Sábado, 15 de Agosto de 2026</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card__icon"><i class="bi bi-clock"></i></div>
+                                <h3 class="info-card__title">Horário</h3>
+                                <p class="info-card__text">Das 18h00 às 23h30</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card__icon"><i class="bi bi-geo-alt"></i></div>
+                                <h3 class="info-card__title">Local</h3>
+                                <p class="info-card__text">Espaço de Eventos Zerrenner<br>Av. Antarctica, 1000 — São
+                                    Paulo, SP</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card__icon"><i class="bi bi-people"></i></div>
+                                <h3 class="info-card__title">Público</h3>
+                                <p class="info-card__text">Colaboradores, ex-colaboradores e beneficiários da unidade
+                                    SP.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-card">
-                        <div class="info-card__icon"><i class="bi bi-clock"></i></div>
-                        <h3 class="info-card__title">Horário</h3>
-                        <p class="info-card__text">Das 18h00 às 23h30</p>
+
+                    <!-- MG -->
+                    <div class="tab-pane fade" id="tab-mg" role="tabpanel" aria-labelledby="mg-tab">
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card__icon"><i class="bi bi-calendar-event"></i></div>
+                                <h3 class="info-card__title">Data</h3>
+                                <p class="info-card__text">Sábado, 22 de Agosto de 2026</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card__icon"><i class="bi bi-clock"></i></div>
+                                <h3 class="info-card__title">Horário</h3>
+                                <p class="info-card__text">Das 17h00 às 22h30</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card__icon"><i class="bi bi-geo-alt"></i></div>
+                                <h3 class="info-card__title">Local</h3>
+                                <p class="info-card__text">Centro de Convenções Zerrenner<br>Rua das Palmeiras, 500 —
+                                    Belo Horizonte,
+                                    MG</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card__icon"><i class="bi bi-people"></i></div>
+                                <h3 class="info-card__title">Público</h3>
+                                <p class="info-card__text">Colaboradores, ex-colaboradores e beneficiários da unidade
+                                    MG.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-card">
-                        <div class="info-card__icon"><i class="bi bi-geo-alt"></i></div>
-                        <h3 class="info-card__title">Local</h3>
-                        <p class="info-card__text">Espaço de Eventos Zerrenner<br>Av. Antarctica, 1000 - São Paulo</p>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-card__icon"><i class="bi bi-people"></i></div>
-                        <h3 class="info-card__title">Público</h3>
-                        <p class="info-card__text">Colaboradores, ex-colaboradores e beneficiários cadastrados.</p>
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -231,14 +381,14 @@
                             <li class="rules-list__item">
                                 <div class="rules-list__icon"><i class="bi bi-suit-club"></i></div>
                                 <div class="rules-list__text"><strong>Traje:</strong> Esporte Fino. Cores sugeridas:
-                                    Branco, Azul ou Verde
-                                    (em sintonia com as cores da nossa história).</div>
+                                    Branco, Azul ou
+                                    Verde (em sintonia com as cores da nossa história).</div>
                             </li>
                             <li class="rules-list__item">
                                 <div class="rules-list__icon"><i class="bi bi-card-checklist"></i></div>
                                 <div class="rules-list__text"><strong>Credenciamento:</strong> Apresente o QR Code da
-                                    inscrição ou seu CPF na
-                                    entrada.</div>
+                                    inscrição ou seu
+                                    CPF na entrada.</div>
                             </li>
                             <li class="rules-list__item">
                                 <div class="rules-list__icon"><i class="bi bi-camera"></i></div>
@@ -253,7 +403,8 @@
                             <div class="card-custom__icon"><i class="bi bi-info-circle"></i></div>
                             <h3 class="card-custom__title">Nota Importante</h3>
                             <p>As inscrições são limitadas e serão processadas por ordem de chegada. Não esqueça de
-                                confirmar a presença do seu acompanhante informando o nome completo no formulário.</p>
+                                confirmar a
+                                presença do seu acompanhante informando o nome completo no formulário.</p>
                             <p>Dúvidas? Entre em contato com a Fundação através do canal interno.</p>
                         </div>
                     </div>
@@ -268,7 +419,6 @@
                 <p class="section__subtitle fade-in">Momentos marcantes do evento Reconhecer.</p>
 
                 <div class="gallery-grid fade-in" id="galleryGrid">
-                    <!-- Placeholders — serão substituídos por fotos reais -->
                     <div class="gallery-item" role="button" tabindex="0" aria-label="Abrir foto 1">
                         <div class="gallery-placeholder"><i class="bi bi-image" aria-hidden="true"></i></div>
                         <div class="gallery-item__overlay">
@@ -322,6 +472,19 @@
 
                     <form id="registrationForm" novalidate>
                         <div class="row">
+
+                            <!-- UNIDADE (Primeiro campo — destaque) -->
+                            <div class="col-12">
+                                <div class="form-floating-custom location-select-highlight">
+                                    <label for="unidade">Unidade do Evento <span class="required">*</span></label>
+                                    <select class="form-select" id="unidade" name="unidade" required>
+                                        <option value="" disabled selected>Selecione sua cidade...</option>
+                                        <option value="São Paulo">São Paulo — 15/Ago/2026</option>
+                                        <option value="Minas Gerais">Minas Gerais — 22/Ago/2026</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-12">
                                 <div class="form-floating-custom">
                                     <label for="fullName">Nome Completo <span class="required">*</span></label>
@@ -364,7 +527,7 @@
 
                             <div class="col-12">
                                 <label class="d-block mb-2"
-                                    style="font-family: var(--font-heading); font-weight: 500; font-size: var(--font-size-xs); color: var(--color-gray-600);">
+                                    style="font-family: var(--font-heading); font-weight: 500; font-size: var(--font-size-xs); color: var(--color-gray-600); text-transform: uppercase; letter-spacing: 0.03em;">
                                     Levará acompanhante?
                                 </label>
                                 <div class="toggle-group" role="radiogroup" aria-label="Acompanhante">
@@ -457,9 +620,11 @@
             <div class="footer__top">
                 <div class="footer__logos">
                     <img src="logo.svg" alt="Reconhecer logo" class="footer__logo">
-                    <img src="logo 90 anos.svg" alt="90 anos logo" class="footer__logo">
+                    <div class="footer__logo-divider"></div>
+                    <img src="img/90-anos-logo.png" alt="90 anos logo" class="footer__logo footer__logo--90">
                 </div>
                 <div class="footer__links">
+                    <a href="#90anos" class="footer__link">90 Anos</a>
                     <a href="#sobre" class="footer__link">Sobre</a>
                     <a href="#informacoes" class="footer__link">Informações</a>
                     <a href="#regras" class="footer__link">Orientações</a>
@@ -470,8 +635,7 @@
             </div>
             <div class="footer__bottom">
                 <p>&copy; 2026 Fundação Antonio e Helena Zerrenner. Todos os direitos reservados.</p>
-                <p class="mt-2" style="opacity: 0.6; font-size: 0.75rem;">Desenvolvido para o evento Reconhecer 2026.
-                </p>
+                <p class="mt-2" style="opacity: 0.6; font-size: 0.75rem;">90 anos cuidando de vidas.</p>
             </div>
         </div>
     </footer>
@@ -484,10 +648,7 @@
     <!-- ==============================
        SCRIPTS
   =============================== -->
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom JS -->
     <script src="js/main.js"></script>
     <script src="js/form.js"></script>
     <script src="js/gallery.js"></script>

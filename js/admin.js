@@ -50,16 +50,21 @@ function logout() {
 }
 
 // ---- Carregar dados ----
-function loadData(filter) {
+function loadData(filter, unitFilterValue) {
     var registrations = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 
-    // Filtrar se houver busca
-    if (filter) {
-        var searchTerm = filter.toLowerCase();
+    // Filtrar se houver busca ou filtro de unidade
+    if (filter || unitFilterValue) {
+        var searchTerm = (filter || '').toLowerCase();
         registrations = registrations.filter(function (r) {
-            return (r.nomeCompleto || '').toLowerCase().includes(searchTerm) ||
+            var matchesSearch = !searchTerm ||
+                (r.nomeCompleto || '').toLowerCase().includes(searchTerm) ||
                 (r.email || '').toLowerCase().includes(searchTerm) ||
                 (r.empresa || '').toLowerCase().includes(searchTerm);
+
+            var matchesUnit = !unitFilterValue || r.unidade === unitFilterValue;
+
+            return matchesSearch && matchesUnit;
         });
     }
 
@@ -85,6 +90,7 @@ function loadData(filter) {
         tr.innerHTML =
             '<td>' + (index + 1) + '</td>' +
             '<td>' + escapeHtml(reg.dataInscricao || '') + '</td>' +
+            '<td><span class="badge ' + (reg.unidade === 'São Paulo' ? 'bg-info' : 'bg-warning text-dark') + '">' + escapeHtml(reg.unidade || '-') + '</span></td>' +
             '<td><strong>' + escapeHtml(reg.nomeCompleto || '') + '</strong></td>' +
             '<td>' + escapeHtml(reg.email || '') + '</td>' +
             '<td>' + escapeHtml(reg.telefone || '') + '</td>' +
@@ -100,9 +106,13 @@ function loadData(filter) {
     });
 }
 
-// ---- Busca ----
-searchInput.addEventListener('input', function () {
-    loadData(this.value);
+// ---- Busca e Filtro ----
+document.getElementById('searchInput').addEventListener('input', function () {
+    loadData(this.value, document.getElementById('unitFilter').value);
+});
+
+document.getElementById('unitFilter').addEventListener('change', function () {
+    loadData(document.getElementById('searchInput').value, this.value);
 });
 
 // ---- Exportar para Excel ----
@@ -119,6 +129,7 @@ function exportToExcel() {
         return {
             '#': index + 1,
             'Data Inscrição': reg.dataInscricao || '',
+            'Unidade': reg.unidade || '',
             'Nome Completo': reg.nomeCompleto || '',
             'E-mail': reg.email || '',
             'Telefone': reg.telefone || '',

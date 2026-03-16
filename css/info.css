@@ -218,3 +218,285 @@
         font-size: var(--font-size-2xl);
     }
 }
+
+/* ============================================
+   SEÇÃO 90 ANOS — Celebração
+   ============================================ */
+
+/* ---- Gradientes ---- */
+:root {
+    --gradient-primary: linear-gradient(135deg, #005496 0%, #0083b5 50%, #7ac143 100%);
+}
+
+.section-90anos {
+    background: linear-gradient(180deg, var(--color-white) 0%, var(--color-blue-50) 40%, var(--color-white) 100%);
+    padding-bottom: var(--space-4xl);
+}
+
+/* Logo destaque */
+.ninetyanos-logo {
+    max-width: 260px;
+    height: auto;
+    margin-bottom: var(--space-xl);
+    filter: drop-shadow(0 8px 30px rgba(0, 131, 181, 0.15));
+    animation: float90 3s ease-in-out infinite;
+}
+
+@keyframes float90 {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Contadores */
+.ninetyanos-counters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-3xl) auto;
+    max-width: 900px;
+}
+
+.counter-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 131, 181, 0.06);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.counter-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.counter-card__number {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-extrabold);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    display: inline;
+}
+
+.counter-card__suffix {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-teal-400);
+    margin-left: 2px;
+}
+
+.counter-card__label {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-500);
+    margin-top: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ============================================
+   TIMELINE
+   ============================================ */
+.ninetyanos-timeline {
+    max-width: 700px;
+    margin: var(--space-3xl) auto 0;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 32px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+}
+
+.timeline__item {
+    position: relative;
+    padding-bottom: var(--space-xl);
+}
+
+.timeline__item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline__dot {
+    position: absolute;
+    left: -26px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-blue-300);
+    border: 3px solid var(--color-white);
+    box-shadow: 0 0 0 3px var(--color-blue-300);
+    z-index: 1;
+}
+
+.timeline__item:last-child .timeline__dot {
+    background: var(--color-green-400);
+    box-shadow: 0 0 0 3px var(--color-green-400);
+}
+
+.timeline__content {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 131, 181, 0.06);
+    transition: box-shadow var(--transition-base);
+}
+
+.timeline__content:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.timeline__year {
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    color: var(--color-blue-300);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.timeline__content p {
+    margin: var(--space-xs) 0 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    line-height: 1.5;
+}
+
+/* ============================================
+   LOCATION TABS (SP / MG)
+   ============================================ */
+.location-tabs {
+    gap: var(--space-md);
+    border: none;
+    margin-bottom: var(--space-2xl) !important;
+}
+
+.location-tabs .nav-item {
+    flex: 0 1 200px;
+}
+
+.location-tabs .nav-link {
+    width: 100%;
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-md);
+    color: var(--color-blue-700);
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-full);
+    padding: var(--space-md) var(--space-xl);
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    box-shadow: var(--shadow-sm);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.location-tabs .nav-link i {
+    font-size: 1.25rem;
+    transition: transform var(--transition-fast);
+}
+
+.location-tabs .nav-link:hover:not(.active) {
+    border-color: var(--color-blue-300);
+    color: var(--color-blue-300);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.location-tabs .nav-link.active {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(0, 79, 145, 0.2);
+}
+
+.location-tabs .nav-link.active i {
+    transform: scale(1.1);
+}
+
+@media (max-width: 575.98px) {
+    .location-tabs {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .location-tabs .nav-item {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+}
+
+
+/* ============================================
+   FORM — Destaque do campo Unidade
+   ============================================ */
+.location-select-highlight {
+    background: var(--color-blue-50);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-lg);
+    border: 2px solid rgba(0, 131, 181, 0.15);
+}
+
+.location-select-highlight .form-select {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-md);
+}
+
+/* ============================================
+   RESPONSIVO — 90 Anos
+   ============================================ */
+@media (max-width: 767.98px) {
+    .ninetyanos-logo {
+        max-width: 200px;
+    }
+
+    .ninetyanos-counters {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .counter-card__number {
+        font-size: var(--font-size-2xl);
+    }
+
+    .timeline {
+        padding-left: 28px;
+    }
+
+    .location-tabs .nav-link {
+        font-size: var(--font-size-sm);
+        padding: var(--space-sm) var(--space-lg);
+    }
+}

@@ -26,24 +26,27 @@
 }
 
 .navbar-reconhecer .logo-reconhecer {
-    height: 48px;
+    height: 52px;
+    /* Aumentado para melhor visibilidade */
     width: auto;
     transition: height var(--transition-base);
 }
 
 .navbar-reconhecer .logo-90anos {
-    height: 44px;
+    height: 50px;
+    /* Ajustado para o novo PNG de 90 anos */
     width: auto;
     transition: height var(--transition-base);
 }
 
 .navbar-reconhecer.scrolled .logo-reconhecer {
-    height: 38px;
+    height: 40px;
 }
 
 .navbar-reconhecer.scrolled .logo-90anos {
-    height: 34px;
+    height: 38px;
 }
+
 
 .navbar-reconhecer .logo-divider {
     width: 1px;
@@ -68,6 +71,16 @@
     color: var(--color-blue-700) !important;
     background: rgba(0, 131, 181, 0.06);
 }
+
+.navbar-reconhecer .nav-link[href="#90anos"] {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-blue-300) !important;
+}
+
+.navbar-reconhecer .nav-link[href="#90anos"]:hover {
+    color: var(--color-blue-700) !important;
+}
+
 
 .navbar-reconhecer .nav-cta {
     background: var(--gradient-primary);
