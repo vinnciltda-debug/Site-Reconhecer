@@ -195,46 +195,88 @@ document.addEventListener('DOMContentLoaded', function () {
     if (honoreesModal) {
         honoreesModal.addEventListener('show.bs.modal', function () {
             loadHonorees();
+            document.getElementById('newHonoreeCpf').value = '';
         });
 
-        // Atualizar lista em tempo real ao colar/digitar no textarea
-        document.getElementById('honoreesList').addEventListener('input', function () {
-            var rawText = this.value;
-            var rawCpfs = rawText.split(/[\n,;]+/);
-            var cleanCpfs = [];
-            rawCpfs.forEach(function (val) {
-                var clean = val.replace(/\D/g, '');
-                if (clean.length === 11) cleanCpfs.push(clean);
-            });
-            var uniqueCpfs = cleanCpfs.filter(function (item, pos) { return cleanCpfs.indexOf(item) == pos; });
-            document.getElementById('honoreesCount').textContent = uniqueCpfs.length + ' homenageado(s)';
+        // Permite adicionar com Enter
+        document.getElementById('newHonoreeCpf').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addHonoree();
+            }
         });
     }
 });
 
+function maskHonoreeCpf(input) {
+    var value = input.value.replace(/\D/g, '');
+    if (value.length > 11) value = value.slice(0, 11);
+    if (value.length > 9) {
+        input.value = value.slice(0, 3) + '.' + value.slice(3, 6) + '.' + value.slice(6, 9) + '-' + value.slice(9);
+    } else if (value.length > 6) {
+        input.value = value.slice(0, 3) + '.' + value.slice(3, 6) + '.' + value.slice(6);
+    } else if (value.length > 3) {
+        input.value = value.slice(0, 3) + '.' + value.slice(3);
+    } else {
+        input.value = value;
+    }
+}
+
 function loadHonorees() {
     var honorees = JSON.parse(localStorage.getItem(HONOREES_KEY) || '[]');
-    document.getElementById('honoreesList').value = honorees.join('\n');
+    var listGroup = document.getElementById('honoreesListGroup');
+    listGroup.innerHTML = '';
+
+    if (honorees.length === 0) {
+        listGroup.innerHTML = '<div class="text-center text-muted p-3" style="font-size: 0.9rem;">Nenhum homenageado cadastrado.</div>';
+    } else {
+        honorees.forEach(function (cpf, index) {
+            var formattedCpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+            var item = document.createElement('div');
+            item.className = 'list-group-item d-flex justify-content-between align-items-center bg-light border-0 mb-1 rounded';
+            item.innerHTML = `
+                <span style="font-family: monospace; font-size: 1.05rem;" class="text-dark">${formattedCpf}</span>
+                <button class="btn btn-sm btn-outline-danger border-0" onclick="removeHonoree(${index})" title="Remover">
+                    <i class="bi bi-trash3-fill"></i>
+                </button>
+            `;
+            listGroup.appendChild(item);
+        });
+    }
+
     document.getElementById('honoreesCount').textContent = honorees.length + ' homenageado(s)';
 }
 
-function saveHonorees() {
-    var rawText = document.getElementById('honoreesList').value;
-    var rawCpfs = rawText.split(/[\n,;]+/);
-    var cleanCpfs = [];
+function addHonoree() {
+    var input = document.getElementById('newHonoreeCpf');
+    var rawCpf = input.value.replace(/\D/g, '');
 
-    rawCpfs.forEach(function (val) {
-        var clean = val.replace(/\D/g, '');
-        if (clean.length === 11) {
-            cleanCpfs.push(clean);
-        }
-    });
+    if (rawCpf.length !== 11) {
+        alert('Por favor, insira um CPF válido com 11 dígitos.');
+        return;
+    }
 
-    // Remove duplicates
-    var uniqueCpfs = cleanCpfs.filter(function (item, pos) {
-        return cleanCpfs.indexOf(item) == pos;
-    });
+    var honorees = JSON.parse(localStorage.getItem(HONOREES_KEY) || '[]');
 
-    localStorage.setItem(HONOREES_KEY, JSON.stringify(uniqueCpfs));
+    if (honorees.includes(rawCpf)) {
+        alert('Este CPF já está na lista de homenageados.');
+        return;
+    }
+
+    honorees.push(rawCpf);
+    localStorage.setItem(HONOREES_KEY, JSON.stringify(honorees));
+
+    input.value = '';
     loadHonorees();
+}
+
+function removeHonoree(index) {
+    if (confirm('Tem certeza que deseja remover este CPF da lista de homenageados?')) {
+        var honorees = JSON.parse(localStorage.getItem(HONOREES_KEY) || '[]');
+        if (index > -1 && index < honorees.length) {
+            honorees.splice(index, 1);
+            localStorage.setItem(HONOREES_KEY, JSON.stringify(honorees));
+            loadHonorees();
+        }
+    }
 }
