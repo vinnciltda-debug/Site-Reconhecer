@@ -630,16 +630,28 @@
 
     <!-- Modal Aviso VIP -->
     <div class="modal fade" id="vipAlertModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content border-0 text-center p-4 shadow-lg"
-                style="background: linear-gradient(135deg, #fffcf0 0%, #fff4cc 100%); border-radius: var(--radius-lg); border: 2px solid #eab308 !important;">
-                <i class="bi bi-star-fill mb-3" style="font-size: 2.5rem; color: #f59e0b;"></i>
-                <h4 style="font-family: var(--font-heading); color: #a16207; font-weight: 700;">Bilhete Dourado!</h4>
-                <p style="color: #854d0e; font-size: 0.95rem;">Você é um dos nossos grandes homenageados! Por isso,
-                    preparamos passes especiais para seus convidados.</p>
-                <button type="button" class="btn btn-warning fw-bold text-white shadow-sm mt-2" data-bs-dismiss="modal"
-                    style="background: linear-gradient(90deg, #ca8a04, #eab308); border: none;">Acessar
-                    Benefício</button>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 text-start p-4 shadow-lg"
+                style="background: #f0fdf4; border: 1px solid #bbf7d0 !important; border-radius: var(--radius-lg);">
+                <div class="d-flex align-items-start gap-4">
+                    <i class="bi bi-star-fill" style="font-size: 2.2rem; color: #f59e0b; margin-top: 5px;"></i>
+                    <div>
+                        <h4
+                            style="font-family: var(--font-heading); color: #166534; font-weight: 700; font-size: 1.25rem; margin-bottom: 0.5rem;">
+                            Reconhecemos você!
+                        </h4>
+                        <p style="color: #166534; font-size: 1rem; margin-bottom: 0;">
+                            Como um dos nossos grandes homenageados, você tem direito a levar um
+                            acompanhante.
+                        </p>
+                    </div>
+                </div>
+                <div class="text-end mt-3">
+                    <button type="button" class="btn btn-success fw-bold text-white shadow-sm" data-bs-dismiss="modal"
+                        style="background: #166534; border: none; border-radius: var(--radius-full); padding: 0.4rem 1.2rem;">
+                        Continuar
+                    </button>
+                </div>
             </div>
         </div>
     </div>
