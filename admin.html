@@ -416,6 +416,9 @@
                     <input type="text" class="search-input" id="searchInput" placeholder="Buscar por nome...">
                 </div>
                 <div class="admin-toolbar__actions">
+                    <button class="btn-admin btn-admin--outline" data-bs-toggle="modal" data-bs-target="#honoreesModal">
+                        <i class="bi bi-person-lines-fill"></i> Homenageados
+                    </button>
                     <button class="btn-admin btn-admin--primary" onclick="exportToExcel()">
                         <i class="bi bi-file-earmark-excel"></i> Exportar Excel
                     </button>
@@ -449,6 +452,35 @@
                 <div class="empty-state" id="emptyState" style="display: none;">
                     <div class="empty-state__icon"><i class="bi bi-inbox"></i></div>
                     <p>Nenhuma inscrição encontrada</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Homenageados -->
+    <div class="modal fade" id="honoreesModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content form-wrapper p-0 border-0">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title"
+                        style="font-family: var(--font-heading); color: var(--color-blue-700); font-weight: 600;">
+                        <i class="bi bi-person-lines-fill me-2"></i> Gerenciar Homenageados
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted mb-3" style="font-size: 0.875rem;">
+                        Cole abaixo os CPFs dos homenageados (um por linha ou separados por vírgula).
+                    </p>
+                    <textarea class="form-control mb-3" id="honoreesList" rows="8"
+                        placeholder="Ex:&#10;12345678900&#10;09876543211"></textarea>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary rounded-pill px-3 py-2" id="honoreesCount">0 homenageados</span>
+                        <button class="btn-admin btn-admin--primary" onclick="saveHonorees()" data-bs-dismiss="modal">
+                            <i class="bi bi-floppy"></i> Salvar Lista
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

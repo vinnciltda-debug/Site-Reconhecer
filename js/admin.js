@@ -186,3 +186,55 @@ function escapeHtml(text) {
     div.appendChild(document.createTextNode(text));
     return div.innerHTML;
 }
+
+// ---- Homenageados (Honorees) ----
+var HONOREES_KEY = 'reconhecer_honorees';
+
+document.addEventListener('DOMContentLoaded', function () {
+    var honoreesModal = document.getElementById('honoreesModal');
+    if (honoreesModal) {
+        honoreesModal.addEventListener('show.bs.modal', function () {
+            loadHonorees();
+        });
+
+        // Atualizar lista em tempo real ao colar/digitar no textarea
+        document.getElementById('honoreesList').addEventListener('input', function () {
+            var rawText = this.value;
+            var rawCpfs = rawText.split(/[\n,;]+/);
+            var cleanCpfs = [];
+            rawCpfs.forEach(function (val) {
+                var clean = val.replace(/\D/g, '');
+                if (clean.length === 11) cleanCpfs.push(clean);
+            });
+            var uniqueCpfs = cleanCpfs.filter(function (item, pos) { return cleanCpfs.indexOf(item) == pos; });
+            document.getElementById('honoreesCount').textContent = uniqueCpfs.length + ' homenageado(s)';
+        });
+    }
+});
+
+function loadHonorees() {
+    var honorees = JSON.parse(localStorage.getItem(HONOREES_KEY) || '[]');
+    document.getElementById('honoreesList').value = honorees.join('\n');
+    document.getElementById('honoreesCount').textContent = honorees.length + ' homenageado(s)';
+}
+
+function saveHonorees() {
+    var rawText = document.getElementById('honoreesList').value;
+    var rawCpfs = rawText.split(/[\n,;]+/);
+    var cleanCpfs = [];
+
+    rawCpfs.forEach(function (val) {
+        var clean = val.replace(/\D/g, '');
+        if (clean.length === 11) {
+            cleanCpfs.push(clean);
+        }
+    });
+
+    // Remove duplicates
+    var uniqueCpfs = cleanCpfs.filter(function (item, pos) {
+        return cleanCpfs.indexOf(item) == pos;
+    });
+
+    localStorage.setItem(HONOREES_KEY, JSON.stringify(uniqueCpfs));
+    loadHonorees();
+}

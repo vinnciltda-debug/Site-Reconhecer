@@ -61,7 +61,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
     cpfInput.addEventListener('input', function () {
         this.value = maskCPF(this.value);
+        checkHonoreeStatus(this.value);
     });
+
+    cpfInput.addEventListener('blur', function () {
+        checkHonoreeStatus(this.value);
+    });
+
+    // ---- Verificação de Homenageado ----
+    function checkHonoreeStatus(cpfValue) {
+        var honoreeSection = document.getElementById('honoreeSection');
+        if (!honoreeSection) return;
+
+        if (isValidCPF(cpfValue)) {
+            var rawCpf = cpfValue.replace(/\D/g, '');
+            var honorees = JSON.parse(localStorage.getItem('reconhecer_honorees') || '[]');
+
+            if (honorees.includes(rawCpf)) {
+                honoreeSection.style.display = 'block';
+                return;
+            }
+        }
+
+        // Se não for válido ou não for homenageado, esconde e reseta
+        honoreeSection.style.display = 'none';
+
+        if (companionNo) {
+            companionNo.click(); // Dispara o evento de clique para limpar e esconder os campos
+        }
+    }
 
     // ---- Validação CPF ----
     function isValidCPF(cpf) {
@@ -217,14 +245,19 @@ function resetForm() {
         el.classList.remove('is-valid', 'is-invalid');
     });
 
-    // Reset toggle
+    // Reset toggle e Homenageado
     const companionNo = document.getElementById('companionNo');
     const companionYes = document.getElementById('companionYes');
     const companionFields = document.getElementById('companionFields');
+    const honoreeSection = document.getElementById('honoreeSection');
 
     if (companionNo && companionYes && companionFields) {
         companionNo.classList.add('active');
         companionYes.classList.remove('active');
         companionFields.classList.remove('show');
+    }
+
+    if (honoreeSection) {
+        honoreeSection.style.display = 'none';
     }
 }
