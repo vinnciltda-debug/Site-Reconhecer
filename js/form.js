@@ -71,6 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // ---- Verificação de Homenageado ----
     function checkHonoreeStatus(cpfValue) {
         var honoreeSection = document.getElementById('honoreeSection');
+        var formWrapper = document.querySelector('#registrationModal .modal-content.form-wrapper');
+
         if (!honoreeSection) return;
 
         if (isValidCPF(cpfValue)) {
@@ -79,12 +81,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (honorees.includes(rawCpf)) {
                 honoreeSection.style.display = 'block';
+                if (formWrapper) formWrapper.classList.add('golden-ticket');
                 return;
             }
         }
 
         // Se não for válido ou não for homenageado, esconde e reseta
         honoreeSection.style.display = 'none';
+        if (formWrapper) formWrapper.classList.remove('golden-ticket');
 
         if (companionNo) {
             companionNo.click(); // Dispara o evento de clique para limpar e esconder os campos
@@ -259,5 +263,7 @@ function resetForm() {
 
     if (honoreeSection) {
         honoreeSection.style.display = 'none';
+        var formWrapper = document.querySelector('#registrationModal .modal-content.form-wrapper');
+        if (formWrapper) formWrapper.classList.remove('golden-ticket');
     }
 }
