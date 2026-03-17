@@ -550,11 +550,20 @@
                                 </div>
 
                                 <div class="conditional-field" id="companionFields">
-                                    <div class="form-floating-custom">
-                                        <label for="companionName">Nome do Acompanhante</label>
-                                        <input type="text" class="form-control" id="companionName" name="companionName"
-                                            placeholder="Nome completo do acompanhante">
+                                    <div id="companionsContainer">
+                                        <div class="companion-entry mb-2">
+                                            <div class="form-floating-custom">
+                                                <input type="text" class="form-control companion-input"
+                                                    name="companionName[]" placeholder="Nome completo do convidado 1">
+                                                <label>Nome do Convidado 1</label>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <button type="button" class="btn btn-sm btn-outline-warning mt-2 w-100"
+                                        id="addCompanionBtn"
+                                        style="color: #a16207; border-color: #fde047; font-weight: 600; background: #fffcf0;">
+                                        <i class="bi bi-plus-circle"></i> Adicionar outro convidado
+                                    </button>
                                 </div>
                             </div>
 
@@ -619,6 +628,22 @@
         </div>
     </div>
 
+    <!-- Modal Aviso VIP -->
+    <div class="modal fade" id="vipAlertModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content border-0 text-center p-4 shadow-lg"
+                style="background: linear-gradient(135deg, #fffcf0 0%, #fff4cc 100%); border-radius: var(--radius-lg); border: 2px solid #eab308 !important;">
+                <i class="bi bi-star-fill mb-3" style="font-size: 2.5rem; color: #f59e0b;"></i>
+                <h4 style="font-family: var(--font-heading); color: #a16207; font-weight: 700;">Bilhete Dourado!</h4>
+                <p style="color: #854d0e; font-size: 0.95rem;">Você é um dos nossos grandes homenageados! Por isso,
+                    preparamos passes especiais para seus convidados.</p>
+                <button type="button" class="btn btn-warning fw-bold text-white shadow-sm mt-2" data-bs-dismiss="modal"
+                    style="background: linear-gradient(90deg, #ca8a04, #eab308); border: none;">Acessar
+                    Benefício</button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- ==============================
        FOOTER
@@ -638,6 +663,8 @@
                     <a href="#" class="footer__link" data-bs-toggle="modal"
                         data-bs-target="#registrationModal">Inscrição</a>
                     <a href="#galeria" class="footer__link">Galeria</a>
+                    <a href="admin.html" class="footer__link" style="opacity: 0.5; margin-left: 1rem;"><i
+                            class="bi bi-lock-fill"></i> Adm</a>
                 </div>
             </div>
             <div class="footer__bottom">

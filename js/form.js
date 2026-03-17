@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function () {
         checkHonoreeStatus(this.value);
     });
 
+    let vipModalShown = false;
+
     // ---- Verificação de Homenageado ----
     function checkHonoreeStatus(cpfValue) {
         var honoreeSection = document.getElementById('honoreeSection');
@@ -82,6 +84,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (honorees.includes(rawCpf)) {
                 honoreeSection.style.display = 'block';
                 if (formWrapper) formWrapper.classList.add('golden-ticket');
+
+                // Mostrar o Modal VIP apenas uma vez por CPF validado
+                if (!vipModalShown && document.getElementById('vipAlertModal')) {
+                    var vipModal = new bootstrap.Modal(document.getElementById('vipAlertModal'));
+                    vipModal.show();
+                    vipModalShown = true;
+                }
                 return;
             }
         }
@@ -89,10 +98,40 @@ document.addEventListener('DOMContentLoaded', function () {
         // Se não for válido ou não for homenageado, esconde e reseta
         honoreeSection.style.display = 'none';
         if (formWrapper) formWrapper.classList.remove('golden-ticket');
+        vipModalShown = false; // reseta param
 
         if (companionNo) {
             companionNo.click(); // Dispara o evento de clique para limpar e esconder os campos
         }
+    }
+
+    // ---- Acompanhantes Dinâmicos ----
+    const addCompanionBtn = document.getElementById('addCompanionBtn');
+    const companionsContainer = document.getElementById('companionsContainer');
+    let companionCount = 1;
+
+    if (addCompanionBtn && companionsContainer) {
+        addCompanionBtn.addEventListener('click', function () {
+            companionCount++;
+            const div = document.createElement('div');
+            div.className = 'companion-entry mb-2';
+            div.innerHTML = `
+                <div class="d-flex align-items-center gap-2">
+                    <div class="form-floating-custom flex-grow-1">
+                        <input type="text" class="form-control companion-input" name="companionName[]" placeholder="Nome completo do convidado ${companionCount}">
+                        <label>Nome do Convidado ${companionCount}</label>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-danger remove-companion" style="height: 52px; width: 52px; border-radius: var(--radius-md);" aria-label="Remover">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            `;
+            companionsContainer.appendChild(div);
+
+            div.querySelector('.remove-companion').addEventListener('click', function () {
+                div.remove();
+            });
+        });
     }
 
     // ---- Validação CPF ----
@@ -196,7 +235,16 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Coletar dados
+        // Coletar múltiplos acompanhantes
+        var companionInputs = document.querySelectorAll('.companion-input');
+        var companionsArr = [];
+        companionInputs.forEach(function (input) {
+            if (input.value.trim().length > 0) companionsArr.push(input.value.trim());
+        });
+        var companionNamesJoined = companionsArr.join(', ');
+        var hasCompanionsStr = companionYes.classList.contains('active') && companionsArr.length > 0 ? 'Sim (' + companionsArr.length + ')' : 'Não';
+
+        // Coletar dados globais
         var data = {
             id: Date.now(),
             dataInscricao: new Date().toLocaleString('pt-BR'),
@@ -206,8 +254,8 @@ document.addEventListener('DOMContentLoaded', function () {
             telefone: document.getElementById('phone').value.trim(),
             cpf: document.getElementById('cpf').value.trim(),
             empresa: document.getElementById('company').value.trim(),
-            acompanhante: companionYes.classList.contains('active') ? 'Sim' : 'Não',
-            nomeAcompanhante: document.getElementById('companionName').value.trim(),
+            acompanhante: companionYes.classList.contains('active') ? (companionsArr.length > 0 ? 'Sim (' + companionsArr.length + ')' : 'Sim') : 'Não',
+            nomeAcompanhante: companionYes.classList.contains('active') ? companionNamesJoined : '',
             restricaoAlimentar: document.getElementById('dietary').value,
             observacoes: document.getElementById('observations').value.trim()
         };
